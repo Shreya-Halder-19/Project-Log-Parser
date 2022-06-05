@@ -89,7 +89,6 @@ int main()
 		if (flag == 5)
 		{
 			cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
-			break;
 		}
 		k++;
 	}
@@ -113,7 +112,6 @@ int main()
 		if (flag == 4)
 		{
 			cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
-			break;
 		}
 		k++;
 	}
@@ -130,7 +128,6 @@ int main()
 		if (flag == 1)
 		{
 			cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
-			break;
 		}
 		k++;
 	}
