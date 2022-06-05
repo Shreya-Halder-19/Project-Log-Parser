@@ -18,6 +18,109 @@ Line::Line()
 	message = "";
 }
 
+void filter_result(Line container[], string user_input, int filter_type)
+{
+
+	
+	string x = "";
+	if (filter_type == 1)
+	{
+		int k = 0;
+		while (k < 30)
+		{
+			int flag = 0;
+			for (int it = 0; it < user_input.length(); it++)
+			{
+				if (user_input[it] == container[k].pid[it])
+				{
+					flag++;
+				}
+				else
+				{
+					break;
+				}
+			}
+			if (flag == user_input.length())
+			{
+				cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
+			}
+			k++;
+		}
+	}
+	else if (filter_type == 2)
+	{
+		int k = 0;
+		while (k < 30)
+		{
+			int flag = 0;
+			for (int it = 0; it < user_input.length(); it++)
+			{
+				if (user_input[it] == container[k].thid[it])
+				{
+					flag++;
+				}
+				else
+				{
+					break;
+				}
+			}
+			if (flag == user_input.length())
+			{
+				cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
+			}
+			k++;
+		}
+	}
+	else if (filter_type == 3)
+	{
+		int k = 0;
+		while (k < 30)
+		{
+			int flag = 0;
+			for (int it = 0; it < user_input.length(); it++)
+			{
+				if (user_input[it] == container[k].jid[it])
+				{
+					flag++;
+				}
+				else
+				{
+					break;
+				}
+			}
+			if (flag == user_input.length())
+			{
+				cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
+			}
+			k++;
+		}
+	}
+	else if (filter_type == 4)
+	{
+		int k = 0;
+		while (k < 30)
+		{
+			int flag = 0;
+			for (int it = 0; it < user_input.length(); it++)
+			{
+				if (user_input[it] == container[k].message[it])
+				{
+					flag++;
+				}
+				else
+				{
+					break;
+				}
+			}
+			if (flag == user_input.length())
+			{
+				cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
+			}
+			k++;
+		}
+	}
+}
+
 int main()
 {	
 	fstream MyReadFile("logfile_try.txt");
@@ -59,101 +162,13 @@ int main()
 		i++;
 	}
 
-	/*
-	for (int k = 0; k < 30; k++)
-	{
-		cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
-	}
-	*/
-
-	string user_input_pid, user_input_thid, user_input_jid;
-	cin >> user_input_pid >> user_input_thid >> user_input_jid;
-
-	int k = 0;
-
-	while(k<30)
-	{
-		//cout << k << endl;
-		int flag = 0;
-		for (int it = 0; it < 5; it++)
-		{
-			if (user_input_pid[it] == container[k].pid[it])
-			{
-				flag++;
-			}
-			else
-			{
-				break;
-			}
-		}
-		if (flag == 5)
-		{
-			cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
-		}
-		k++;
-	}
-	k = 0;
-
-	while (k < 30)
-	{
-		//cout << k << endl;
-		int flag = 0;
-		for (int it = 0; it < 4; it++)
-		{
-			if (user_input_thid[it] == container[k].thid[it])
-			{
-				flag++;
-			}
-			else
-			{
-				break;
-			}
-		}
-		if (flag == 4)
-		{
-			cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
-		}
-		k++;
-	}
-	k = 0;
-
-	while (k < 30)
-	{
-		//cout << k << endl;
-		int flag = 0;
-		if (user_input_jid[0] == container[k].jid[0])
-		{
-			flag++;
-		}
-		if (flag == 1)
-		{
-			cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
-		}
-		k++;
-	}
-	k = 0;
-
-	while (k < 30)
-	{
-		//cout << k << endl;
-		int flag = 0;
-		for (int it = 0; it < user_input_message.length(); it++)
-		{
-			if (user_input_message[it] == container[k].message[it])
-			{
-				flag++;
-			}
-			else
-			{
-				break;
-			}
-		}
-		if (flag == user_input_message.length())
-		{
-			cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
-		}
-		k++;
-	}
+	string user_input_pid, user_input_thid, user_input_jid, user_input_message;
+	cin >> user_input_pid >> user_input_thid >> user_input_jid >> user_input_message;
+	
+	filter_result(container, user_input_pid, 1);
+	filter_result(container, user_input_thid, 2);
+	filter_result(container, user_input_jid, 3);
+	filter_result(container, user_input_message, 4);
 
 	MyReadFile.close();
 
