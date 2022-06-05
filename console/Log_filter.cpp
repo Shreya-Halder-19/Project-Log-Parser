@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-using namespace std;
 
 class Line
 {
@@ -18,11 +17,11 @@ Line::Line()
 	message = "";
 }
 
-void filter_result(Line container[], string user_input, int filter_type)
+void filter_result(Line container[], std::string user_input, int filter_type)
 {
 
 	
-	string x = "";
+	std::string x = "";
 	if (filter_type == 1)
 	{
 		int k = 0;
@@ -42,7 +41,7 @@ void filter_result(Line container[], string user_input, int filter_type)
 			}
 			if (flag == user_input.length())
 			{
-				cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
+				std::cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << std::endl;
 			}
 			k++;
 		}
@@ -66,7 +65,7 @@ void filter_result(Line container[], string user_input, int filter_type)
 			}
 			if (flag == user_input.length())
 			{
-				cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
+				std::cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << std::endl;
 			}
 			k++;
 		}
@@ -90,7 +89,7 @@ void filter_result(Line container[], string user_input, int filter_type)
 			}
 			if (flag == user_input.length())
 			{
-				cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
+				std::cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << std::endl;
 			}
 			k++;
 		}
@@ -114,7 +113,7 @@ void filter_result(Line container[], string user_input, int filter_type)
 			}
 			if (flag == user_input.length())
 			{
-				cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
+				std::cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << std::endl;
 			}
 			k++;
 		}
@@ -123,14 +122,14 @@ void filter_result(Line container[], string user_input, int filter_type)
 
 int main()
 {	
-	fstream MyReadFile("logfile_try.txt");
+	std::fstream MyReadFile("logfile_try.txt");
 
 	Line container[30];
-	string myText;
+	std::string myText;
 	int i = 0;
 
 	while (getline(MyReadFile, myText)) {
-		string temp_str = myText;
+		std::string temp_str = myText;
 		int j = 0;
 		while (temp_str[j] != ' ')
 		{
@@ -162,8 +161,8 @@ int main()
 		i++;
 	}
 
-	string user_input_pid, user_input_thid, user_input_jid, user_input_message;
-	cin >> user_input_pid >> user_input_thid >> user_input_jid >> user_input_message;
+	std::string user_input_pid, user_input_thid, user_input_jid, user_input_message;
+	std::cin >> user_input_pid >> user_input_thid >> user_input_jid >> user_input_message;
 	
 	filter_result(container, user_input_pid, 1);
 	filter_result(container, user_input_thid, 2);
