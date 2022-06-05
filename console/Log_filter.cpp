@@ -131,6 +131,29 @@ int main()
 		}
 		k++;
 	}
+	k = 0;
+
+	while (k < 30)
+	{
+		//cout << k << endl;
+		int flag = 0;
+		for (int it = 0; it < user_input_message.length(); it++)
+		{
+			if (user_input_message[it] == container[k].message[it])
+			{
+				flag++;
+			}
+			else
+			{
+				break;
+			}
+		}
+		if (flag == user_input_message.length())
+		{
+			cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << endl;
+		}
+		k++;
+	}
 
 	MyReadFile.close();
 
