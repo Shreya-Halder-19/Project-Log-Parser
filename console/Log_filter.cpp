@@ -5,9 +5,9 @@ using namespace std;
 
 class Line
 {
-public:
-	std::string pid, thid, jid, message;
-	Line();
+	public:
+		std::string pid, thid, jid, message;
+		Line();
 };
 
 Line::Line()
