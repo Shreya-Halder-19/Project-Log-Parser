@@ -21,9 +21,6 @@ Line::Line()
 
 void filter_result(Line log_line[], std::string user_input, int filter_type)
 {
-
-	
-	std::string x = "";
 	if (filter_type == 1)
 	{
 		int k = 0;
