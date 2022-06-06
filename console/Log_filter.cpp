@@ -5,7 +5,7 @@
 class Line
 {
 	public:
-		std::string pid, thid, jid, message;
+		std::string pid, thid, date, time, jid, message;
 		Line();
 };
 
@@ -13,11 +13,13 @@ Line::Line()
 {
 	pid = "";
 	thid = "";
+	date = "";
+	time = "";
 	jid = "";
 	message = "";
 }
 
-void filter_result(Line container[], std::string user_input, int filter_type)
+void filter_result(Line log_line[], std::string user_input, int filter_type)
 {
 
 	
@@ -30,7 +32,7 @@ void filter_result(Line container[], std::string user_input, int filter_type)
 			int flag = 0;
 			for (int it = 0; it < user_input.length(); it++)
 			{
-				if (user_input[it] == container[k].pid[it])
+				if (user_input[it] == log_line[k].pid[it])
 				{
 					flag++;
 				}
@@ -41,7 +43,7 @@ void filter_result(Line container[], std::string user_input, int filter_type)
 			}
 			if (flag == user_input.length())
 			{
-				std::cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << std::endl;
+				std::cout << log_line[k].pid << "  " << log_line[k].thid << "  " << log_line[k].date << "  " << log_line[k].time << "  " << log_line[k].jid << " " << log_line[k].message << std::endl;
 			}
 			k++;
 		}
@@ -54,7 +56,7 @@ void filter_result(Line container[], std::string user_input, int filter_type)
 			int flag = 0;
 			for (int it = 0; it < user_input.length(); it++)
 			{
-				if (user_input[it] == container[k].thid[it])
+				if (user_input[it] == log_line[k].thid[it])
 				{
 					flag++;
 				}
@@ -65,7 +67,7 @@ void filter_result(Line container[], std::string user_input, int filter_type)
 			}
 			if (flag == user_input.length())
 			{
-				std::cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << std::endl;
+				std::cout << log_line[k].pid << "  " << log_line[k].thid << "  " << log_line[k].date << "  " << log_line[k].time << "  " << log_line[k].jid << " " << log_line[k].message << std::endl;
 			}
 			k++;
 		}
@@ -78,7 +80,7 @@ void filter_result(Line container[], std::string user_input, int filter_type)
 			int flag = 0;
 			for (int it = 0; it < user_input.length(); it++)
 			{
-				if (user_input[it] == container[k].jid[it])
+				if (user_input[it] == log_line[k].date[it])
 				{
 					flag++;
 				}
@@ -89,7 +91,7 @@ void filter_result(Line container[], std::string user_input, int filter_type)
 			}
 			if (flag == user_input.length())
 			{
-				std::cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << std::endl;
+				std::cout << log_line[k].pid << "  " << log_line[k].thid << "  " << log_line[k].date << "  " << log_line[k].time << "  " << log_line[k].jid << " " << log_line[k].message << std::endl;
 			}
 			k++;
 		}
@@ -102,7 +104,7 @@ void filter_result(Line container[], std::string user_input, int filter_type)
 			int flag = 0;
 			for (int it = 0; it < user_input.length(); it++)
 			{
-				if (user_input[it] == container[k].message[it])
+				if (user_input[it] == log_line[k].time[it])
 				{
 					flag++;
 				}
@@ -113,7 +115,55 @@ void filter_result(Line container[], std::string user_input, int filter_type)
 			}
 			if (flag == user_input.length())
 			{
-				std::cout << container[k].pid << "  " << container[k].thid << "  " << container[k].jid << " " << container[k].message << std::endl;
+				std::cout << log_line[k].pid << "  " << log_line[k].thid << "  " << log_line[k].date << "  " << log_line[k].time << "  " << log_line[k].jid << " " << log_line[k].message << std::endl;
+			}
+			k++;
+		}
+	}
+	else if (filter_type == 5)
+	{
+		int k = 0;
+		while (k < 30)
+		{
+			int flag = 0;
+			for (int it = 0; it < user_input.length(); it++)
+			{
+				if (user_input[it] == log_line[k].jid[it])
+				{
+					flag++;
+				}
+				else
+				{
+					break;
+				}
+			}
+			if (flag == user_input.length())
+			{
+				std::cout << log_line[k].pid << "  " << log_line[k].thid << "  " << log_line[k].date << "  " << log_line[k].time << "  " << log_line[k].jid << " " << log_line[k].message << std::endl;
+			}
+			k++;
+		}
+	}
+	else if (filter_type == 6)
+	{
+		int k = 0;
+		while (k < 30)
+		{
+			int flag = 0;
+			for (int it = 0; it < user_input.length(); it++)
+			{
+				if (user_input[it] == log_line[k].message[it])
+				{
+					flag++;
+				}
+				else
+				{
+					break;
+				}
+			}
+			if (flag == user_input.length())
+			{
+				std::cout << log_line[k].pid << "  " << log_line[k].thid << "  " << log_line[k].date << "  " << log_line[k].time << "  " << log_line[k].jid << " " << log_line[k].message << std::endl;
 			}
 			k++;
 		}
@@ -124,7 +174,7 @@ int main()
 {	
 	std::fstream MyReadFile("logfile_try.txt");
 
-	Line container[30];
+	Line log_line[30];
 	std::string myText;
 	int i = 0;
 
@@ -133,28 +183,42 @@ int main()
 		int j = 0;
 		while (temp_str[j] != ' ')
 		{
-			container[i].pid += temp_str[j];
+			log_line[i].pid += temp_str[j];
 			j++;
 		}
 		j += 2;
 
 		while (temp_str[j] != ' ')
 		{
-			container[i].thid += temp_str[j];
+			log_line[i].thid += temp_str[j];
 			j++;
 		}
-		j += 19;
+		j += 2;
 
 		while (temp_str[j] != ' ')
 		{
-			container[i].jid += temp_str[j];
+			log_line[i].date += temp_str[j];
+			j++;
+		}
+		j += 2;
+
+		while (temp_str[j] != ' ')
+		{
+			log_line[i].time += temp_str[j];
+			j++;
+		}
+		j += 2;
+
+		while (temp_str[j] != ' ')
+		{
+			log_line[i].jid += temp_str[j];
 			j++;
 		}
 		j += 2;
 
 		while (temp_str[j] != '\0')
 		{
-			container[i].message += temp_str[j];
+			log_line[i].message += temp_str[j];
 			j++;
 		}
 		//cout << j << endl;
@@ -164,21 +228,29 @@ int main()
 	std::string user_input;
 	std::cin >> user_input;
 
-	if (user_input.length() == 5 && user_input[0] != 'E')
+	if (user_input.length() == 5 && user_input[0] != 'E' && user_input[2] != '/')
 	{
-		filter_result(container, user_input, 1);
+		filter_result(log_line, user_input, 1);
 	}
 	else if (user_input.length() == 4)
 	{
-		filter_result(container, user_input, 2);
+		filter_result(log_line, user_input, 2);
+	}
+	else if (user_input[2] == '/')
+	{
+		filter_result(log_line, user_input, 3);
+	}
+	else if (user_input.length() == 8)
+	{
+		filter_result(log_line, user_input, 4);
 	}
 	else if (user_input.length() == 1)
 	{
-		filter_result(container, user_input, 3);
+		filter_result(log_line, user_input, 5);
 	}
 	else if (user_input[0] == 'E' || user_input[0] == 'I' || user_input[0] == 'S')
 	{
-		filter_result(container, user_input, 4);
+		filter_result(log_line, user_input, 6);
 	}
 
 	MyReadFile.close();
