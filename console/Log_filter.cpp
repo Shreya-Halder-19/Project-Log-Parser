@@ -161,13 +161,25 @@ int main()
 		i++;
 	}
 
-	std::string user_input_pid, user_input_thid, user_input_jid, user_input_message;
-	std::cin >> user_input_pid >> user_input_thid >> user_input_jid >> user_input_message;
-	
-	filter_result(container, user_input_pid, 1);
-	filter_result(container, user_input_thid, 2);
-	filter_result(container, user_input_jid, 3);
-	filter_result(container, user_input_message, 4);
+	std::string user_input;
+	std::cin >> user_input;
+
+	if (user_input.length() == 5 && user_input[0] != 'E')
+	{
+		filter_result(container, user_input, 1);
+	}
+	else if (user_input.length() == 4)
+	{
+		filter_result(container, user_input, 2);
+	}
+	else if (user_input.length() == 1)
+	{
+		filter_result(container, user_input, 3);
+	}
+	else if (user_input[0] == 'E' || user_input[0] == 'I' || user_input[0] == 'S')
+	{
+		filter_result(container, user_input, 4);
+	}
 
 	MyReadFile.close();
 
